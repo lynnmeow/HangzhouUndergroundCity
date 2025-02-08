@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杭州地下城居民的一天</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            border: 2px solid #e0e0e0;
+            padding: 30px;
+            width: 60%;
+            margin: auto;
+            background-color: #1a1a1a;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 18px;
+            background: none;
+            border: 2px solid #e0e0e0;
+            color: #e0e0e0;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        button {
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #e0e0e0;
+            color: #121212;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>杭州地下城居民的一天</h1>
+        <div id="input-section">
+            <label for="username">输入用户名：</label>
+            <input type="text" id="username">
+            <button onclick="generateSentence()">生成</button>
+        </div>
+        <p id="result" class="hidden"></p>
+    </div>
+
+    <script>
+        const phrases1 = [
+            "在“地球之光”号返回舱", "在“领航员”号AI中枢", "在2044年", "在2046年", "在2058年", "在2075年", "在9月15日",
+            "在CN171-11救援队", "在EMP枪械训练场", "在MOSS的C盘", "在MOSS的D盘", "在MOSS的E盘", "在MOSS的F盘",
+            "在UEG会议室", "在UEG临时指挥中心", "在UEG总部大楼", "在巴黎", "在半人马座α星系", "在北极点", "在北京地下城王府井"
+        ];
+
+        const phrases2 = [
+            "按核弹开关", "办理医保", "布设核弹", "参加冰橇拉力赛", "参加预备航天员选拔", "参加预备航天员训练", "参加月球启航揭幕仪式",
+            "操控门框机器人", "唱《恭喜发财》", "吃草莓味甜筒", "吃饭", "吃牛奶味甜筒", "吃蚯蚓干", "吃甜筒", "吃蚊子饼",
+            "吃西湖醋地龙", "吃月饼", "抽根华子", "抽中地下城名额", "出列", "催更《流浪地球3》", "代言康复新液", "当冰雕"
+        ];
+
+        function getRandomElement(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function generateSentence() {
+            const username = document.getElementById("username").value.trim();
+            if (username === "") {
+                alert("请输入用户名！");
+                return;
+            }
+            const phrase1 = getRandomElement(phrases1);
+            const phrase2 = getRandomElement(phrases2);
+            document.getElementById("result").textContent = `${username} ${phrase1} ${phrase2}。`;
+
+            // 隐藏输入框和按钮
+            document.getElementById("input-section").classList.add("hidden");
+            document.getElementById("result").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
