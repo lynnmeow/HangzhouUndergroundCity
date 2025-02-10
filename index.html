@@ -64,6 +64,16 @@
             <input type="text" id="username">
             <button onclick="generateSentence()">生成</button>
         </div>
+        <style>
+            /* ... existing styles ... */
+        
+            /* 移动端适配 */
+            @media (max-width: 768px) {
+                #username {
+                    width: 80%; /* 缩短输入框宽度 */
+                }
+            }
+        </style>
         <p id="result" class="hidden"></p>
     </div>
 
@@ -92,7 +102,7 @@
             }
             const phrase1 = getRandomElement(phrases1);
             const phrase2 = getRandomElement(phrases2);
-            document.getElementById("result").textContent = `${username}${phrase1}${phrase2}。`;
+            document.getElementById("result").textContent = `${username} ${phrase1} ${phrase2}。`;
 
             // 隐藏输入框和按钮
             document.getElementById("input-section").classList.add("hidden");
